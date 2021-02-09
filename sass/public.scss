@@ -1,5 +1,6 @@
 @import "./variables.scss";
 @import "./mixins.scss";
+@import "./breakpoint.scss";
 
 body {
     background-color: $color-background;
@@ -45,15 +46,15 @@ body {
         }
     
         footer {
+            height: auto;
+            padding: 20px;
             display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            align-items: center;
-            height: 56px;
-            padding: 15px;        
-    
+            flex-wrap: nowrap !important;
+            flex-direction: column;
+
             a {
-                margin-right: 20px;
+                width: 100%;
+                padding: 10px;
             }
         }
     }
