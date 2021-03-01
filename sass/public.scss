@@ -1,61 +1,54 @@
 @import "./variables.scss";
-@import "./mixins.scss";
-@import "./breakpoint.scss";
 
 body {
-    background-color: $color-background;
+    margin: 0;
+    padding: 0;
 
-    .container-global {
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
+    .header {
+        background-color: $color-primary;
+    }
 
-        a {
-            color: black;
-    
-            &:hover {
-                text-decoration: none;
-                color: $color-secondary;
+    .main {
+
+        h1 {
+            margin: 20px 0 20px 10px;
+            font-size: 1.8em;
+            font-family: 'Akaya Telivigala', cursive;
+
+            i {
+                margin: 0 20px 0 0;
             }
         }
-    
-        .active a{
-            color: $color-secondary!important;
-        }
-    
-        .nav{
-            background-color: $color-primary;
-            box-shadow: 0px 2px 6px 0px grey;
-            font-weight: 700;
-    
-            &__logo{
-                height: 40px;
-                width: auto;
-                padding-bottom: 5px;
-            }
-        }
-        
-        main {
-            flex: 1;
-            padding: 15px;
-            background-color: $color-background;
-    
-            h1 {
-                font-size: 2em;
-            }
-        }
-    
-        footer {
-            height: auto;
-            padding: 20px;
+
+        .cards-list {
             display: flex;
-            flex-wrap: nowrap !important;
-            flex-direction: column;
+            justify-content: center;
 
-            a {
-                width: 100%;
-                padding: 10px;
+            .card-list {
+
+                .cards-container {
+                    margin: 0 20px 20px 0;
+    
+                    .card-price {
+                        position: absolute;
+                        right: 2%;
+                        top: 2%;
+                        padding: 5px 20px 5px 20px;
+                        background-color: #D4EDDA;
+                        color: #588C64;
+                        border: 1px solid #C3E6CB;
+                        border-radius: 5px 0 5px 0;
+                    }
+    
+                    .cards-picture {
+                        object-fit: cover;
+                    }
+                }
             }
         }
+    }
+
+    .footer {
+        border: 1px solid green;
     }
 }

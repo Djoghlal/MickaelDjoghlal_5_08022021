@@ -1,49 +1,40 @@
 body {
-  background-color: #eeeeee;
+  margin: 0;
+  padding: 0;
 }
-body .container-global {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-body .container-global a {
-  color: black;
-}
-body .container-global a:hover {
-  text-decoration: none;
-  color: #7238df;
-}
-body .container-global .active a {
-  color: #7238df !important;
-}
-body .container-global .nav {
+body .header {
   background-color: #f3e9f1;
-  box-shadow: 0px 2px 6px 0px grey;
-  font-weight: 700;
 }
-body .container-global .nav__logo {
-  height: 40px;
-  width: auto;
-  padding-bottom: 5px;
+body .main h1 {
+  margin: 20px 0 20px 10px;
+  font-size: 1.8em;
+  font-family: "Akaya Telivigala", cursive;
 }
-body .container-global main {
-  flex: 1;
-  padding: 15px;
-  background-color: #eeeeee;
+body .main h1 i {
+  margin: 0 20px 0 0;
 }
-body .container-global main h1 {
-  font-size: 2em;
-}
-body .container-global footer {
-  height: auto;
-  padding: 20px;
+body .main .cards-list {
   display: flex;
-  flex-wrap: nowrap !important;
-  flex-direction: column;
+  justify-content: center;
 }
-body .container-global footer a {
-  width: 100%;
-  padding: 10px;
+body .main .cards-list .card-list .cards-container {
+  margin: 0 20px 20px 0;
+}
+body .main .cards-list .card-list .cards-container .card-price {
+  position: absolute;
+  right: 2%;
+  top: 2%;
+  padding: 5px 20px 5px 20px;
+  background-color: #D4EDDA;
+  color: #588C64;
+  border: 1px solid #C3E6CB;
+  border-radius: 5px 0 5px 0;
+}
+body .main .cards-list .card-list .cards-container .cards-picture {
+  object-fit: cover;
+}
+body .footer {
+  border: 1px solid green;
 }
 
 /*# sourceMappingURL=style.css.map */
