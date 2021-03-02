@@ -28,5 +28,5 @@ fetch(url)
         }
 
         //On va séléctionner le conteneur afin d'y afficher le resultat !
-        document.querySelector('#cards-list').innerHTML = teddiesContainer;
+        document.querySelector('#card-list').innerHTML = teddiesContainer;
     });

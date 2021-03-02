@@ -21,10 +21,11 @@ body {
         }
 
         .cards-list {
-            display: flex;
-            justify-content: center;
-
+            margin: 0;
+            
             .card-list {
+                display: flex;
+                justify-content: center;
 
                 .cards-container {
                     margin: 0 20px 20px 0;
