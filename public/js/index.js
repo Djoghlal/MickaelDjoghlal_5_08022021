@@ -20,7 +20,7 @@ fetch(url)
                     <div class="card-body">
                         <h5 class="card-title">${teddiesList.name} Teddie</h5>
                         <p class="card-text">${teddiesList.description}</p>
-                        <a href="./teddies.html?id=${teddiesList._id}"><div class="btn btn-primary">Détails</div></a>
+                        <a href="./public/pages/article.html?id=${teddiesList._id}"><div class="btn btn-primary">Détails</div></a>
                     </div>
                 </div>
             `;
