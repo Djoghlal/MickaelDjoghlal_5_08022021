@@ -1,29 +1,35 @@
-body {
+html, body {
   margin: 0;
   padding: 0;
 }
-body .header {
+html .header, body .header {
   background-color: #f3e9f1;
 }
-body .main h1 {
-  margin: 20px 0 20px 10px;
+html .main h1, body .main h1 {
+  margin: 20px 0 30px 10px;
   font-size: 1.8em;
   font-family: "Akaya Telivigala", cursive;
 }
-body .main h1 i {
+html .main h1 i, body .main h1 i {
   margin: 0 20px 0 0;
 }
-body .main .cards-list {
-  margin: 0;
+html .main .warning-none, body .main .warning-none {
+  display: none;
 }
-body .main .cards-list .card-list {
+html .main .warning-view, body .main .warning-view {
+  display: block;
+}
+html .main .cards-list, body .main .cards-list {
+  margin: 30px 0 0 0;
+}
+html .main .cards-list .card-list, body .main .cards-list .card-list {
   display: flex;
   justify-content: center;
 }
-body .main .cards-list .card-list .cards-container {
+html .main .cards-list .card-list .cards-container, body .main .cards-list .card-list .cards-container {
   margin: 0 20px 20px 0;
 }
-body .main .cards-list .card-list .cards-container .card-price {
+html .main .cards-list .card-list .cards-container .card-price, body .main .cards-list .card-list .cards-container .card-price {
   position: absolute;
   right: 2%;
   top: 2%;
@@ -33,11 +39,19 @@ body .main .cards-list .card-list .cards-container .card-price {
   border: 1px solid #C3E6CB;
   border-radius: 5px 0 5px 0;
 }
-body .main .cards-list .card-list .cards-container .cards-picture {
+html .main .cards-list .card-list .cards-container .cards-picture, body .main .cards-list .card-list .cards-container .cards-picture {
   object-fit: cover;
 }
-body .footer {
-  border: 1px solid green;
+html .footer, body .footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  height: 56px;
+  box-shadow: 0px -2px 6px 0px #f3e9f1;
+}
+html .footer a, body .footer a {
+  margin: 0 10px;
 }
 
 /*# sourceMappingURL=style.css.map */
