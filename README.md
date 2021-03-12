@@ -1,15 +1,15 @@
-# Orinoco #
+###### Orinoco, lancer le serveur ######
 
-This is the back end server for Project 5 of the Junior Web Developer path.
+# Ouvrir le terminal #
+Cliquez en haut sur `Terminal` et `Nouveau terminal`
 
-### Prerequisites ###
+# Cibler le chemin du BackEnd en tapant dans la console: #
+`cd ../../P5_02_backend/JWDP5-master`
 
-You will need to have Node and `npm` installed locally on your machine.
+# Installer le package, tapez dans la console  #
+`npm install`
 
-### Installation ###
+# Lancer le serveur, tapez dans la console #
+`node server`
 
-Clone this repo. From within the project folder, run `npm install`. You 
-can then run the server with `node server`. 
-The server should run on `localhost` with default port `3000`. If the
-server runs on another port for any reason, this is printed to the
-console when the server starts, e.g. `Listening on port 3001`.
+# Et voilà, vous pouvez à présent lancer index.html #
