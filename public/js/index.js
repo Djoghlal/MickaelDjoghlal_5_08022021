@@ -1,5 +1,5 @@
 //On créer la variable de l'API
-const url = 'http://localhost:3000/API/teddies';
+const url = 'http://localhost:3000/API/teddies/';
 
 //On travaille avec fetch afin d'appeler l'API et d'avoir en retour des promesses.
 fetch(url)
