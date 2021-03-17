@@ -48,12 +48,18 @@ html, body {
                         border: 1px solid #C3E6CB;
                         border-radius: 5px 0 5px 0;
                     }
-    
+                    
                     .cards-picture {
                         object-fit: cover;
                     }
                 }
             }
+        }
+
+        .badge-price {
+            padding: 10px;
+            margin: 0 0 10px 0;
+            font-size: 13px;
         }
     }
 

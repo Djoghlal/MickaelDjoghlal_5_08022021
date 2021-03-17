@@ -18,7 +18,33 @@ fetch(urlPrivate)
         //On met un console.log de la réponse, afin d'avoir les descriptions de l'API (dans ce cas l'article correspondant à l'ID)
         console.log(data);
 
-        teddieChoice = `<h1>${data.name}</h1>`;
+        //On défini la variable du contenu de la boucle pour l'afficher après
+        let = teddieOption = '<select>';
+        for (let i=0; i < data.colors.length; i++) {
+            teddieOption += `<option value="${data.colors[i]}">${data.colors[i]}</option>`;
+        }
+        teddieOption += '</select>';
+
+        //Contenu de la card
+        teddieChoice = `
+            <div class="card mb-3" style="max-width: 540px;">
+                <div class="row no-gutters">
+                    <div class="col-md-4">
+                        <img src="${data.imageUrl}" class="card-img border border-light rounded" alt="Photo teddie ${data.name}">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                        <h5 class="card-title">Orico-${data.name}</h5>
+                        <span class="badge badge-success badge-price">${data.price/100}€</span>
+                        <p class="card-text"><strong>Option(s):</strong></p>
+                        <p class="card-text">${teddieOption}</p>
+                        <p class="card-text">${data.description}</p>
+                        <button type="button" class="btn btn-primary">Ajouter au panier</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
 
         //On va séléctionner le conteneur afin d'y afficher le resultat !
         document.querySelector('#articleChoice').innerHTML = teddieChoice;

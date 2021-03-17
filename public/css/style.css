@@ -42,6 +42,11 @@ html .main .cards-list .card-list .cards-container .card-price, body .main .card
 html .main .cards-list .card-list .cards-container .cards-picture, body .main .cards-list .card-list .cards-container .cards-picture {
   object-fit: cover;
 }
+html .main .badge-price, body .main .badge-price {
+  padding: 10px;
+  margin: 0 0 10px 0;
+  font-size: 13px;
+}
 html .footer, body .footer {
   display: flex;
   flex-wrap: wrap;
