@@ -1,25 +1,22 @@
 //On récupère l'url complète du lien avec l'id à l'intérieur
-let url = window.location.href;
+let urlProduit = window.location.href;
 
 //On recherche l'ID dans l'URL récupérée
-let id = url.split('?id=');
+let id = urlProduit.split('?id=');
 let idPrivate = id[1];
 console.log(idPrivate);
 
 //On appelle l'API pour trouver les informations du nounours avec l'ID correspondant.
-let urlPrivate = `http://localhost:3000/api/teddies/${idPrivate}`;
+let urlPrivate = url + idPrivate;
 
 fetch(urlPrivate)
-    //On créer la première promesse qui va nous renvoyer la réponse de l'API en objet.
     .then(response => response.json())
 
-    //On créer la 2ème promesse qui nous renvoi les données (data)
     .then(data => {
-        //On met un console.log de la réponse, afin d'avoir les descriptions de l'API (dans ce cas l'article correspondant à l'ID)
         console.log(data);
 
         //On défini la variable du contenu de la boucle pour l'afficher après
-        let = teddieOption = '<select>';
+        let = teddieOption = '<select id="optionTeddie">';
         for (let i=0; i < data.colors.length; i++) {
             teddieOption += `<option value="${data.colors[i]}">${data.colors[i]}</option>`;
         }
@@ -39,7 +36,7 @@ fetch(urlPrivate)
                         <p class="card-text"><strong>Option(s):</strong></p>
                         <p class="card-text">${teddieOption}</p>
                         <p class="card-text">${data.description}</p>
-                        <button type="button" class="btn btn-primary">Ajouter au panier</button>
+                        <button type="button" class="btn btn-primary" id="btn-panier">Ajouter au panier</button>
                         </div>
                     </div>
                 </div>
@@ -48,20 +45,50 @@ fetch(urlPrivate)
 
         //On va séléctionner le conteneur afin d'y afficher le resultat !
         document.querySelector('#articleChoice').innerHTML = teddieChoice;
+
+        //Evenement si on clique sur le bouton d'ajout au panier
+        let btnAdd = document.querySelector('#btn-panier');
+        btnAdd.addEventListener('click', function () {
+        
+            //On vérifie si une option est bien choisie car elles sont obligatoires
+            //On récupère la valuer de l'option
+            let optionChoice = document.querySelector('#optionTeddie').value;
+
+            if (optionChoice != "") {
+                //La valeur est bien rentrée, on y créer l'objet du teddie
+                let teddieChoice = {
+                    id: data._id,
+                    name: data.name,
+                    price: data.price/100,
+                    option: optionChoice
+                }
+
+                //On converti le contenu de la variable en JSON
+                teddieChoiceJson = JSON.stringify(teddieChoice);
+
+                //On sauvegarde la valeur dans le localStorage avec id + option
+                localStorage.setItem(teddieChoice.id + teddieChoice.option, teddieChoiceJson);
+
+            } else {
+                //Message d'erreur concernant le non renseignement de l'option.
+                let optionError = querySelector('#event-status');
+                optionError.innerHTML(`
+                <h4 class="alert-heading">Attention</h4>
+                <p>Veuillez choisir une option pour votre panier.</p>`);
+            }
+
+        });
+
     })
 
     .catch(error => {
         console.log(error);
-            //Une erreur, on affiche un message dans le container dédié à ça.
             let errorServer = document.querySelector('#event-status');
 
             errorServer.innerHTML = `<h4 class="alert-heading">Erreur serveur</h4>
             <p>Un problème sur le site est detecté, notre équipe met tout en oeuvre pour le résoudre au plus vite.</p>
             <p>A bientôt sur notre boutique !</p>`;
 
-            errorServer.classList.remove('warning-none'); //On supprime la classe si elle est existante
-            errorServer.classList.add('warning-view'); //On ajoute la class qui va afficher l'erreur.
-
-            // On peut à la place de revenir en arrière, mettre un timer pour raffraichir la page.
-            // setTimeout(function() { document.location.reload() }, 2000);
+            errorServer.classList.remove('warning-none');
+            errorServer.classList.add('warning-view');
     });
