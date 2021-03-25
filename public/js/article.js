@@ -49,34 +49,7 @@ fetch(urlPrivate)
         //Evenement si on clique sur le bouton d'ajout au panier
         let btnAdd = document.querySelector('#btn-panier');
         btnAdd.addEventListener('click', function () {
-        
-            //On vérifie si une option est bien choisie car elles sont obligatoires
-            //On récupère la valuer de l'option
-            let optionChoice = document.querySelector('#optionTeddie').value;
-
-            if (optionChoice != "") {
-                //La valeur est bien rentrée, on y créer l'objet du teddie
-                let teddieChoice = {
-                    id: data._id,
-                    name: data.name,
-                    price: data.price/100,
-                    option: optionChoice
-                }
-
-                //On converti le contenu de la variable en JSON
-                teddieChoiceJson = JSON.stringify(teddieChoice);
-
-                //On sauvegarde la valeur dans le localStorage avec id + option
-                localStorage.setItem(teddieChoice.id + teddieChoice.option, teddieChoiceJson);
-
-            } else {
-                //Message d'erreur concernant le non renseignement de l'option.
-                let optionError = querySelector('#event-status');
-                optionError.innerHTML(`
-                <h4 class="alert-heading">Attention</h4>
-                <p>Veuillez choisir une option pour votre panier.</p>`);
-            }
-
+            addPanier(data);
         });
 
     })

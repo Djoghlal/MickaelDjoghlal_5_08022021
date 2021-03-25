@@ -13,10 +13,10 @@ html .main h1, body .main h1 {
 html .main h1 i, body .main h1 i {
   margin: 0 20px 0 0;
 }
-html .main .warning-none, body .main .warning-none {
+html .main .warning-none, html .main .success-none, body .main .warning-none, body .main .success-none {
   display: none;
 }
-html .main .warning-view, body .main .warning-view {
+html .main .warning-view, html .main .success-view, body .main .warning-view, body .main .success-view {
   display: block;
 }
 html .main .cards-list, body .main .cards-list {

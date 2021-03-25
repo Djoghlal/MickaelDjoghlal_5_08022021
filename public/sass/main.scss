@@ -20,11 +20,11 @@ html, body {
             }
         }
 
-        .warning-none {
+        .warning-none, .success-none {
             display: none;
         }
 
-        .warning-view {
+        .warning-view, .success-view {
             display: block;
         }
 
