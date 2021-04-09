@@ -14,21 +14,21 @@ let tabTeddies = `
 `;
 
 //On récupère le contenu du localStorage grâce à une boucle et key.
-for (let i = 0; i < localStorage.length; i++) {
-    let teddieListJson = localStorage.getItem(localStorage.key(i));
-    let teddieListConvert = JSON.parse(teddieListJson);
+// for (let i = 0; i < localStorage.length; i++) {
+//     let teddieListJson = localStorage.getItem(localStorage.key(i));
+//     let teddieListConvert = JSON.parse(teddieListJson);
 
-    //On créer l'intérieur du tableau
-    tabTeddies += `
-    <tr>
-        <th scope="row">${i}</th>
-        <td>${teddieListConvert.name}</td>
-        <td>${teddieListConvert.option}</td>
-        <td>${teddieListConvert.price}€</td>
-        <td><button type="button" class="btn btn-danger">Supprimer le produit</button></td>
-    </tr>
-    `;    
- }
+//     //On créer l'intérieur du tableau
+//     tabTeddies += `
+//     <tr>
+//         <th scope="row">${i}</th>
+//         <td>${teddieListConvert.name}</td>
+//         <td>${teddieListConvert.option}</td>
+//         <td>${teddieListConvert.price}€</td>
+//         <td><button type="button" class="btn btn-danger">Supprimer le produit</button></td>
+//     </tr>
+//     `;    
+//  }
 
  prixTotal();
 
