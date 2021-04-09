@@ -4,7 +4,7 @@ let urlProduit = window.location.href;
 //On recherche l'ID dans l'URL récupérée
 let id = urlProduit.split('?id=');
 let idPrivate = id[1];
-console.log(idPrivate);
+//console.log(idPrivate);
 
 //On appelle l'API pour trouver les informations du nounours avec l'ID correspondant.
 let urlPrivate = url + idPrivate;
@@ -13,7 +13,7 @@ fetch(urlPrivate)
     .then(response => response.json())
 
     .then(data => {
-        console.log(data);
+        //console.log(data);
 
         //On défini la variable du contenu de la boucle pour l'afficher après
         let = teddieOption = '<select id="optionTeddie">';
@@ -33,8 +33,15 @@ fetch(urlPrivate)
                         <div class="card-body">
                         <h5 class="card-title">Orico-${data.name}</h5>
                         <span class="badge badge-success badge-price">${data.price/100}€</span>
+
+                        <p class="card-text"><strong>Quantité:</strong></p>
+                        <input type="number"></input>
+
+                        <br /><br />
+
                         <p class="card-text"><strong>Option(s):</strong></p>
                         <p class="card-text">${teddieOption}</p>
+
                         <p class="card-text">${data.description}</p>
                         <button type="button" class="btn btn-primary" id="btn-panier">Ajouter au panier</button>
                         </div>
