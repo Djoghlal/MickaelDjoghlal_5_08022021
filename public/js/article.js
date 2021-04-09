@@ -34,8 +34,10 @@ fetch(urlPrivate)
                         <h5 class="card-title">Orico-${data.name}</h5>
                         <span class="badge badge-success badge-price">${data.price/100}€</span>
 
+                        <input type="text" id="idTeddie" value="${data._id}"></input>
+
                         <p class="card-text"><strong>Quantité:</strong></p>
-                        <input type="number"></input>
+                        <input type="number" id="quantityTeddie"></input>
 
                         <br /><br />
 
@@ -56,7 +58,12 @@ fetch(urlPrivate)
         //Evenement si on clique sur le bouton d'ajout au panier
         let btnAdd = document.querySelector('#btn-panier');
         btnAdd.addEventListener('click', function () {
-            addPanier(data);
+
+            const idChoice = document.querySelector('#idTeddie').value;
+            const optionChoice = document.querySelector('#optionTeddie').value;
+            const quantityChoice = document.querySelector('#quantityTeddie').value;
+
+            addPanier(idChoice ,optionChoice, quantityChoice);
         });
 
     })
