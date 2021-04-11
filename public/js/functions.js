@@ -16,12 +16,26 @@ function addPanier(idArticle ,optionArticle, quantityArticle) {
             quantity: parseInt(quantityArticle)
         };
         
-        for (let eltBasket of basketContainer) {
+        for (let i = 0; i < basketContainer.length; i++) {
             //Si id et option existe, on ajoute quantité
             //Sinon, on ajoute l'objet complet
-            if (teddieChoice.id == eltBasket.id && teddieChoice.option == eltBasket.option) {
+            let count = basketContainer[i];
+
+            if (teddieChoice.id == count.id && teddieChoice.option == count.option) {
                     console.log('Cet objet est déjà dans votre panier');
-                    let quantityFinaly = parseInt(eltBasket.quantity) + teddieChoice.quantity;
+                    
+                    teddieChoice.quantity = parseInt(count.quantity) + teddieChoice.quantity;
+                    basketContainer.splice([i], 1, teddieChoice); //On modifie la ligne correspondante dans le tableau avec la nouvelle valeur.
+
+                    basketContainerFinaly = JSON.stringify(basketContainer);
+                    localStorage.setItem("basketTeddies", basketContainerFinaly);  
+                    
+                    eventContainer.innerHTML = `
+                    <h4 class="alert-heading">Validation</h4>
+                    <p>La quantité de votre article a été mis à jour dans votre panier.</p>
+                    `;
+                    eventContainer.classList.replace('warning-none', 'success-view');
+                    eventContainer.classList.replace('alert-danger', 'alert-success');
                 break;
             } else {
                     console.log(`L'objet n'est pas existant dans le panier !`)
