@@ -20,12 +20,29 @@ html, body {
             }
         }
 
-        .warning-none, .success-none {
+        .warning-none, .success-none, .result-input-none {
             display: none;
         }
 
         .warning-view, .success-view {
             display: block;
+        }
+
+        .result-input-view {
+            display: inline-block;
+        }
+
+        .quantity-check {
+            color: green;
+        }
+
+        .quantity-error {
+            color: red;
+        }
+
+        .result-input-error {
+            color: red;
+            font-weight: bold;
         }
 
         .cards-list {

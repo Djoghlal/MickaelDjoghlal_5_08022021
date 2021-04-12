@@ -13,11 +13,24 @@ html .main h1, body .main h1 {
 html .main h1 i, body .main h1 i {
   margin: 0 20px 0 0;
 }
-html .main .warning-none, html .main .success-none, body .main .warning-none, body .main .success-none {
+html .main .warning-none, html .main .success-none, html .main .result-input-none, body .main .warning-none, body .main .success-none, body .main .result-input-none {
   display: none;
 }
 html .main .warning-view, html .main .success-view, body .main .warning-view, body .main .success-view {
   display: block;
+}
+html .main .result-input-view, body .main .result-input-view {
+  display: inline-block;
+}
+html .main .quantity-check, body .main .quantity-check {
+  color: green;
+}
+html .main .quantity-error, body .main .quantity-error {
+  color: red;
+}
+html .main .result-input-error, body .main .result-input-error {
+  color: red;
+  font-weight: bold;
 }
 html .main .cards-list, body .main .cards-list {
   margin: 30px 0 0 0;

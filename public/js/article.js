@@ -16,7 +16,7 @@ fetch(urlPrivate)
         //console.log(data);
 
         //On défini la variable du contenu de la boucle pour l'afficher après
-        let = teddieOption = '<select id="optionTeddie">';
+        let = teddieOption = '<select id="optionTeddie" class="form-control">';
         for (let i=0; i < data.colors.length; i++) {
             teddieOption += `<option value="${data.colors[i]}">${data.colors[i]}</option>`;
         }
@@ -34,17 +34,22 @@ fetch(urlPrivate)
                         <h5 class="card-title">Orico-${data.name}</h5>
                         <span class="badge badge-success badge-price">${data.price/100}€</span>
 
-                        <input type="text" id="idTeddie" value="${data._id}"></input>
+                        <input type="text" id="idTeddie" class="invisible" value="${data._id}"></input>
 
-                        <p class="card-text"><strong>Quantité:</strong></p>
-                        <input type="number" id="quantityTeddie"></input>
-
-                        <br /><br />
-
-                        <p class="card-text"><strong>Option(s):</strong></p>
-                        <p class="card-text">${teddieOption}</p>
-
-                        <p class="card-text">${data.description}</p>
+                        <form>
+                            <div class="form-group">
+                                <label for="quantityTeddie"><strong>Quantité:</strong></label>
+                                <i class="fas fa-check quantity-check result-input-none"></i> 
+                                <i class="fas fa-times quantity-error result-input-none"></i>
+                                <input type="text" class="form-control" id="quantityTeddie" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="optionTeddie"><strong>Option(s):</strong></label>
+                                ${teddieOption}
+                            </div>
+                        </form>
+                        
+                        <p class="card-text"><strong>Description:</strong><br />${data.description}</p>
                         <button type="button" class="btn btn-primary" id="btn-panier">Ajouter au panier</button>
                         </div>
                     </div>
@@ -65,7 +70,6 @@ fetch(urlPrivate)
 
             addPanier(idChoice ,optionChoice, quantityChoice);
         });
-
     })
 
     .catch(error => {
