@@ -7,7 +7,7 @@ let idPrivate = id[1];
 //console.log(idPrivate);
 
 //On appelle l'API pour trouver les informations du nounours avec l'ID correspondant.
-let urlPrivate = url + idPrivate;
+const urlPrivate = url + idPrivate;
 
 fetch(urlPrivate)
     .then(response => response.json())
