@@ -6,6 +6,7 @@ const eventContainer = document.querySelector('#event-status');
 function addPanier(idArticle ,optionArticle, quantityArticle) {
     //On vérifie avant tout le formulaire si le champ quantité est vide ou pas ainsi que le champ option
     let i = 0;
+    let regNumber = new RegExp('^[0-9]');
     let descError = "";
     if (regNumber.test(quantityArticle)) {
         //On met le logo qui correspond à la validation
