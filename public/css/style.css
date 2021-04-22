@@ -55,10 +55,17 @@ html .main .cards-list .card-list .cards-container .card-price, body .main .card
 html .main .cards-list .card-list .cards-container .cards-picture, body .main .cards-list .card-list .cards-container .cards-picture {
   object-fit: cover;
 }
+html .main .card-basket, body .main .card-basket {
+  margin: 15px;
+}
 html .main .badge-price, body .main .badge-price {
   padding: 10px;
   margin: 0 0 10px 0;
   font-size: 13px;
+}
+html .main #panier-container, body .main #panier-container {
+  display: flex;
+  justify-content: center;
 }
 html .footer, body .footer {
   display: flex;
