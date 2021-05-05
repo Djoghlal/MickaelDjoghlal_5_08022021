@@ -8,46 +8,46 @@ if (storageBasketJson != null) {
     let storageBasket = JSON.parse(storageBasketJson);
     document.querySelector('#panier-container').innerHTML = '';
 
-    //On créer le contenu de prix global
-    let storagePrice = 0;
+    async function selectProducts(totalPrice) {
+        //On créer le contenu de prix global
+        let storagePrice = 0;
 
-    //On exécute la boucle pour retrouver les produits avec les ID
-    for (const elt of storageBasket) { 
-        let urlProduct = url + elt.id;
+        //On exécute la boucle pour retrouver les produits avec les ID
+        for (const elt of storageBasket) { 
+            let urlProduct = url + elt.id;
 
-        fetch(urlProduct) .then(function(response) {
-            return response.json();
-        }) .then(function(dataBasket) {
-                articlePriceFinaly = elt.quantity * (dataBasket.price/100);
-                document.querySelector('#panier-container').innerHTML += `
-                    <div class="card card-basket" style="width: 18rem;">
-                        <div class="card-body">
-                            <h5 class="card-title">Orico ${dataBasket.name}</h5>
-                            <p class="card-text"><span class="badge badge-success badge-price">${dataBasket.price/100}€</span></p>
+            await fetch(urlProduct) .then(function(response) {
+                return response.json();
+            }) .then(function(dataBasket) {
+                    articlePriceFinaly = elt.quantity * (dataBasket.price/100);
+                    document.querySelector('#panier-container').innerHTML += `
+                        <div class="card card-basket" style="width: 18rem;">
+                            <div class="card-body">
+                                <h5 class="card-title">Orico ${dataBasket.name}</h5>
+                                <p class="card-text"><span class="badge badge-success badge-price">${dataBasket.price/100}€</span></p>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item"><strong>Quantité: </strong>${elt.quantity}</li>
+                                <li class="list-group-item"><strong>Option: </strong>${elt.option}</li>
+                                <li class="list-group-item"><strong>Prix total: </strong>${articlePriceFinaly}€</li>
+                            </ul>
+                            <div class="card-body">
+                                <button type="button" class="btn btn-danger" id="deleteBasket"><i class="fas fa-trash-alt"></i></button>
+                            </div>
                         </div>
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item"><strong>Quantité: </strong>${elt.quantity}</li>
-                            <li class="list-group-item"><strong>Option: </strong>${elt.option}</li>
-                            <li class="list-group-item"><strong>Prix total: </strong>${articlePriceFinaly}€</li>
-                        </ul>
-                        <div class="card-body">
-                            <button type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
-                        </div>
-                    </div>
-                `;
+                    `;
 
-                //On implémente le prix de l'article à chaque boucle
-                storagePrice += articlePriceFinaly;
-        })
+                    // //On implémente le prix de l'article à chaque boucle
+                    // storagePrice += articlePriceFinaly;
+            })
 
-        .catch(error => {
-            console.log(error);
-        });
+            .catch(error => {
+                console.log(error);
+            })
+        }
 
-        
+        return totalPrice;
     }
-
-    console.log(storagePrice);
 
 } else {
     document.querySelector('#panier-container').innerHTML += `

@@ -68,7 +68,7 @@ fetch(urlPrivate)
             const optionChoice = document.querySelector('#optionTeddie').value;
             const quantityChoice = document.querySelector('#quantityTeddie').value;
 
-            addPanier(idChoice ,optionChoice, quantityChoice);
+            addBasket(idChoice ,optionChoice, quantityChoice);
         });
     })
 
