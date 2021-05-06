@@ -8,7 +8,7 @@ if (storageBasketJson != null) {
     let storageBasket = JSON.parse(storageBasketJson);
     document.querySelector('#panier-container').innerHTML = '';
 
-    async function selectProducts(totalPrice) {
+    async function selectProducts() {
         //On créer le contenu de prix global
         let storagePrice = 0;
 
@@ -19,7 +19,7 @@ if (storageBasketJson != null) {
             await fetch(urlProduct) .then(function(response) {
                 return response.json();
             }) .then(function(dataBasket) {
-                    articlePriceFinaly = elt.quantity * (dataBasket.price/100);
+                    let articlePriceFinaly = elt.quantity * (dataBasket.price/100);
                     document.querySelector('#panier-container').innerHTML += `
                         <div class="card card-basket" style="width: 18rem;">
                             <div class="card-body">
@@ -37,8 +37,8 @@ if (storageBasketJson != null) {
                         </div>
                     `;
 
-                    // //On implémente le prix de l'article à chaque boucle
-                    // storagePrice += articlePriceFinaly;
+                    //On implémente le prix de l'article à chaque boucle
+                    storagePrice += articlePriceFinaly;
             })
 
             .catch(error => {
@@ -46,8 +46,10 @@ if (storageBasketJson != null) {
             })
         }
 
-        return totalPrice;
+        document.querySelector('#container-price').innerHTML = `<strong>Prix total à payer:</strong> ${storagePrice}€`;
     }
+
+    selectProducts();
 
 } else {
     document.querySelector('#panier-container').innerHTML += `
