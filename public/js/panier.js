@@ -95,14 +95,16 @@ if (storageBasketJson != null) {
 
         let fetchInit = { 
             method: 'POST',
+            body: JSON.stringify(dataFinal),
             headers: {
                 "Content-Type": "application/json",
-            },
-            body: JSON.stringify(dataFinal),
+            }
         };
 
-        fetch(urlOrder, fetchInit) .then(function(response) {
-                return response.json();
+        fetch(urlOrder, fetchInit) 
+        .then(function(response) {
+                console.log(response);
+                //return response.json();
             }) .then(function(dataServer) {
                 //On fait le traitement du retour du serveur
                 console.log(dataServer);
