@@ -13,10 +13,10 @@ html .main h1, body .main h1 {
 html .main h1 i, body .main h1 i {
   margin: 0 20px 0 0;
 }
-html .main .warning-none, html .main .success-none, html .main .result-input-none, body .main .warning-none, body .main .success-none, body .main .result-input-none {
+html .main .warning-none, html .main .success-none, html .main .result-input-none, html .main .btn-none, html .main .get-basket-none, body .main .warning-none, body .main .success-none, body .main .result-input-none, body .main .btn-none, body .main .get-basket-none {
   display: none;
 }
-html .main .warning-view, html .main .success-view, body .main .warning-view, body .main .success-view {
+html .main .warning-view, html .main .success-view, html .main .btn-view, html .main .get-basket-view, body .main .warning-view, body .main .success-view, body .main .btn-view, body .main .get-basket-view {
   display: block;
 }
 html .main .result-input-view, body .main .result-input-view {

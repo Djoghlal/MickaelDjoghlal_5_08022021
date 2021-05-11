@@ -8,6 +8,11 @@ if (storageBasketJson != null) {
     let storageBasket = JSON.parse(storageBasketJson);
     document.querySelector('#panier-container').innerHTML = '';
 
+    //Supprimer le panier si il n'y a rien à l'intérieur.
+    if (storageBasket.length < 1) {
+        deleteAll();
+    }
+
     async function selectProducts() {
         //On créer le contenu de prix global
         let storagePrice = 0;
@@ -47,9 +52,69 @@ if (storageBasketJson != null) {
         }
 
         document.querySelector('#container-price').innerHTML = `<strong>Prix total à payer:</strong> ${storagePrice}€`;
+        
     }
 
     selectProducts();
+
+    //On fait l'event de suppression du panier complet
+    let btnDelAll = document.querySelector('#delete-all-basket');
+    btnDelAll.innerHTML = `<button type="button" class="btn btn-danger float-center btn-view" id="deleteAllBasket">Supprimer le panier</button>`;
+    btnDelAll.addEventListener('click', function () {
+        deleteAll();
+    });
+
+
+    //Envoi des données sur le serveur avec la méthode fetch POST
+    getBasket.addEventListener('submit', function (event) {
+        event.preventDefault()
+
+        //L'utilisateur que nous devons envoyer en tant qu'objet avec POST
+        const contact = {
+            firstName: firstName.value,
+            lastName: lastName.value,
+            address: address.value,
+            city: city.value,
+            email: email.value
+        };
+
+        //console.log(contact);
+
+        //Le tableau des produits envoyé au backend doit être un array de strings produits
+        const produits = [];
+        const dataFinal = {contact, produits};
+
+        //On parcours storageBasket pour les articles
+        for (i = 0; i < storageBasket.length; i++) {
+            let productFinal = {id: storageBasket[i].id, option: storageBasket[i].option}; 
+            produits.push(productFinal);
+        }
+
+        //On peut maintenant tout transformer en JSON pour l'envoyer au serveur
+        let urlOrder = url + 'order';
+
+        let fetchInit = { 
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(dataFinal),
+        };
+
+        fetch(urlOrder, fetchInit) .then(function(response) {
+                return response.json();
+            }) .then(function(dataServer) {
+                //On fait le traitement du retour du serveur
+                console.log(dataServer);
+            })
+
+        .catch((error) => {
+            alert(error);
+        })
+    });
+
+
+
 
 } else {
     document.querySelector('#panier-container').innerHTML += `
@@ -57,4 +122,15 @@ if (storageBasketJson != null) {
         <img alt="None" src="../images/ciao.gif" />
         <p class="text-center lead">Votre panier est vide :'(</p>
     </div>`;
+
+    document.querySelector('#container-price').innerHTML = `<strong>Prix total à payer:</strong> 0€`;
+
+    //On cache le bouton de suppression du panier total car on a rien à y faire si il n'y a rien au panier.
+    btnDelAll = document.querySelector('#delete-all-basket');
+    btnDelAll.classList.replace("btn-view", "btn-none");
+
+    //On cache également le formulaire de contact qui ne sert à rien dans ce cas
+    formGuest = document.querySelector('#getBasket');
+    formGuest.classList.replace("get-basket-view", "get-basket-none");
+
 }

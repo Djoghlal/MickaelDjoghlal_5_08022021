@@ -143,3 +143,20 @@ function deleteBasket(idArticle, optionArticle) {
 
     setTimeout(function(){ window.location.reload(1); }, 2000);
 }
+
+
+
+function deleteAll() {
+    //On supprime la totalité du contenu dans le localStorage
+    localStorage.removeItem('basketTeddies');
+
+    //On valide le message de suppression au panier.
+    eventContainer.innerHTML = `
+        <h4 class="alert-heading">Validation</h4>
+        <p>Votre panier à été vidé entièrement.</p>
+    `;
+    eventContainer.classList.replace('warning-none', 'success-view');
+    eventContainer.classList.replace('alert-danger', 'alert-success');
+
+    setTimeout(function(){ window.location.reload(1); }, 2000);
+}

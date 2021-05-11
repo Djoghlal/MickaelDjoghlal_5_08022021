@@ -56,10 +56,51 @@
             </noscript>
 
             <div id="event-status" class="alert alert-danger warning-none" role="alert"></div>
+            <div id="delete-all-basket"></div>
 
             <div class="container-fluid">
                 <div class="row" id="panier-container"></div>
             </div>
+
+            <h1 class="row"><i class="fas fa-paw "></i>Commander mes articles</h1>
+            <form method="POST" class="get-basket-view" id="getBasket">
+              <div class="form-row">
+                <div class="col-md-4 mb-3">
+                  <label for="firstName">Votre prénom</label>
+                  <input type="text" class="form-control" id="firstName" placeholder="Prénom" value="Mark" required>
+                </div>
+                <div class="col-md-4 mb-3">
+                  <label for="lastName">Votre nom de famille</label>
+                  <input type="text" class="form-control" id="lastName" placeholder="Nom de famille" value="Otto" required>
+                </div>
+                <div class="col-md-4 mb-3">
+                  <label for="email">Votre adresse email</label>
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="inputGroupPrepend3">@</span>
+                    </div>
+                    <input type="email" class="form-control" id="email" placeholder="Email" aria-describedby="inputGroupPrepend3" required>
+                  </div>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="col-md-6 mb-3">
+                  <label for="address">Votre adresse postale</label>
+                  <input type="text" class="form-control" id="address" placeholder="Adresse" required>
+                </div>
+                <div class="col-md-3 mb-3">
+                  <label for="city">Votre ville</label>
+                  <input type="text" class="form-control" id="city" placeholder="Ville" required>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="form-check">
+                  <input class="form-check-input is-invalid" type="checkbox" value="" id="check" required>
+                  <label class="form-check-label" for="check">Accepter les termes et conditions</label>
+                </div>
+              </div>
+              <button class="btn btn-primary" type="submit">Passer commande</button>
+            </form>
         </main>
     <!-- FIN DU CORPS DE PAGE -->
 

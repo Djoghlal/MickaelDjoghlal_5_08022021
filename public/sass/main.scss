@@ -20,11 +20,11 @@ html, body {
             }
         }
 
-        .warning-none, .success-none, .result-input-none {
+        .warning-none, .success-none, .result-input-none, .btn-none, .get-basket-none {
             display: none;
         }
 
-        .warning-view, .success-view {
+        .warning-view, .success-view, .btn-view, .get-basket-view {
             display: block;
         }
 
