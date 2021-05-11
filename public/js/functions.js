@@ -68,6 +68,8 @@ function addBasket(idArticle ,optionArticle, quantityArticle) {
                         `;
                         eventContainer.classList.replace('warning-none', 'success-view');
                         eventContainer.classList.replace('alert-danger', 'alert-success');
+
+                        setTimeout(function(){ window.location.reload(1); }, 2000);
                     break;
                 }
             }
@@ -91,6 +93,8 @@ function addBasket(idArticle ,optionArticle, quantityArticle) {
             `;
             eventContainer.classList.replace('warning-none', 'success-view');
             eventContainer.classList.replace('alert-danger', 'alert-success');
+
+            setTimeout(function(){ window.location.reload(1); }, 2000);
         }
         
     } else {
@@ -104,3 +108,38 @@ function addBasket(idArticle ,optionArticle, quantityArticle) {
         eventContainer.classList.replace('warning-none', 'warning-view');
     }
  }
+
+
+
+function deleteBasket(idArticle, optionArticle) {
+    //On a l'article concerné par la demande de suppression
+    //Le panier existe, on parcours le localStorage et vérifier à chaque boucle si l'ID et l'option existe.
+    let basketContainerJson = localStorage.getItem("basketTeddies");
+    let basketContainer = JSON.parse(basketContainerJson);
+
+    for (let i = 0; i < basketContainer.length; i++) {
+        //Dans chaque boucle, on vérifie si l'Id et l'Article sont dans le localStorage
+        if (idArticle == basketContainer[i].id && optionArticle == basketContainer[i].option) {
+                //console.log('Article Ok, on peut le supprimer du panier !');
+                //On utilise splice pour supprimer l'article de l'Array récupéré sur le localStorage
+                const deleteNewArticle = basketContainer.splice(i, 1);
+            break;
+        } else {
+            console.log('Suivant article non concerné !');
+        }
+    }
+
+    //On peut mettre à jour le localStorage
+    basketContainerJson = JSON.stringify(basketContainer);
+    localStorage.setItem("basketTeddies", basketContainerJson);
+
+    //On valide le message de suppression au panier.
+    eventContainer.innerHTML = `
+        <h4 class="alert-heading">Validation</h4>
+        <p>Votre article a été correctement supprimé du panier.</p>
+    `;
+    eventContainer.classList.replace('warning-none', 'success-view');
+    eventContainer.classList.replace('alert-danger', 'alert-success');
+
+    setTimeout(function(){ window.location.reload(1); }, 2000);
+}

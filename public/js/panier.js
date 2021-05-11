@@ -32,7 +32,7 @@ if (storageBasketJson != null) {
                                 <li class="list-group-item"><strong>Prix total: </strong>${articlePriceFinaly}€</li>
                             </ul>
                             <div class="card-body">
-                                <button type="button" class="btn btn-danger" id="deleteBasket"><i class="fas fa-trash-alt"></i></button>
+                                <button type="button" class="btn btn-danger" id="deleteBasket" onclick="deleteBasket('${elt.id}', '${elt.option}')"><i class="fas fa-trash-alt"></i></button>
                             </div>
                         </div>
                     `;
