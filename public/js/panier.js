@@ -78,41 +78,44 @@ if (storageBasketJson != null) {
             email: email.value
         };
 
-        //console.log(contact);
-
         //Le tableau des produits envoyé au backend doit être un array de strings produits
         const produits = [];
-        const dataFinal = {contact, produits};
+        const order = { contact, produits };
 
         //On parcours storageBasket pour les articles
         for (i = 0; i < storageBasket.length; i++) {
-            let productFinal = {id: storageBasket[i].id, option: storageBasket[i].option}; 
+            let productFinal = storageBasket[i].id; 
             produits.push(productFinal);
         }
+
+        console.log(order);
 
         //On peut maintenant tout transformer en JSON pour l'envoyer au serveur
         let urlOrder = url + 'order';
 
         let fetchInit = { 
             method: 'POST',
-            body: JSON.stringify(dataFinal),
+            body: JSON.stringify(order),
             headers: {
                 "Content-Type": "application/json",
-            }
+            },
         };
 
         fetch(urlOrder, fetchInit) 
-        .then(function(response) {
-                console.log(response);
-                //return response.json();
-            }) .then(function(dataServer) {
-                //On fait le traitement du retour du serveur
-                console.log(dataServer);
-            })
+        .then(response => response.json())
+        .then(result => {
+            //On fait le traitement du retour du serveur
+            const orderId = result.order_id;
+            //On supprime le contenu du Storage
+            //localStorage.removeItem('basketTeddies');
+            //On redirectionne le client vers la page de confirmation.
+            //location.href = `../pages/confirm.html?orderid=${orderId}`;
 
+            console.log(orderId);
+        })
         .catch((error) => {
             alert(error);
-        })
+        });
     });
 
 
@@ -134,5 +137,4 @@ if (storageBasketJson != null) {
     //On cache également le formulaire de contact qui ne sert à rien dans ce cas
     formGuest = document.querySelector('#getBasket');
     formGuest.classList.replace("get-basket-view", "get-basket-none");
-
 }
