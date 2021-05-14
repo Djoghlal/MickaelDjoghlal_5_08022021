@@ -79,13 +79,13 @@ if (storageBasketJson != null) {
         };
 
         //Le tableau des produits envoyé au backend doit être un array de strings produits
-        const produits = [];
-        const order = { contact, produits };
+        const products = [];
+        const order = { contact, products };
 
         //On parcours storageBasket pour les articles
         for (i = 0; i < storageBasket.length; i++) {
             let productFinal = storageBasket[i].id; 
-            produits.push(productFinal);
+            products.push(productFinal);
         }
 
         console.log(order);
@@ -105,11 +105,9 @@ if (storageBasketJson != null) {
         .then(response => response.json())
         .then(result => {
             //On fait le traitement du retour du serveur
-            const orderId = result.order_id;
-            //On supprime le contenu du Storage
-            //localStorage.removeItem('basketTeddies');
+            const orderId = result.orderId;
             //On redirectionne le client vers la page de confirmation.
-            //location.href = `../pages/confirm.html?orderid=${orderId}`;
+            location.href = `../pages/confirm.html?orderid=${orderId}`;
 
             console.log(orderId);
         })
@@ -123,8 +121,8 @@ if (storageBasketJson != null) {
 
 } else {
     document.querySelector('#panier-container').innerHTML += `
-    <div class="container-fluid">
-        <img alt="None" src="../images/ciao.gif" />
+    <div class="container-fluid text-center">
+        <img alt="No basket" class="center-block" src="../images/ciao.gif" />
         <p class="text-center lead">Votre panier est vide :'(</p>
     </div>`;
 

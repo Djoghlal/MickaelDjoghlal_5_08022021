@@ -133,15 +133,7 @@ function deleteBasket(idArticle, optionArticle) {
     basketContainerJson = JSON.stringify(basketContainer);
     localStorage.setItem("basketTeddies", basketContainerJson);
 
-    //On valide le message de suppression au panier.
-    eventContainer.innerHTML = `
-        <h4 class="alert-heading">Validation</h4>
-        <p>Votre article a été correctement supprimé du panier.</p>
-    `;
-    eventContainer.classList.replace('warning-none', 'success-view');
-    eventContainer.classList.replace('alert-danger', 'alert-success');
-
-    setTimeout(function(){ window.location.reload(1); }, 2000);
+    window.location.reload(1);
 }
 
 
@@ -150,13 +142,5 @@ function deleteAll() {
     //On supprime la totalité du contenu dans le localStorage
     localStorage.removeItem('basketTeddies');
 
-    //On valide le message de suppression au panier.
-    eventContainer.innerHTML = `
-        <h4 class="alert-heading">Validation</h4>
-        <p>Votre panier à été vidé entièrement.</p>
-    `;
-    eventContainer.classList.replace('warning-none', 'success-view');
-    eventContainer.classList.replace('alert-danger', 'alert-success');
-
-    setTimeout(function(){ window.location.reload(1); }, 2000);
+    window.location.reload(1);
 }
